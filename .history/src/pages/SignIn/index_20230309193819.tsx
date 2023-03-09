@@ -1,13 +1,9 @@
 import React from 'react';
 
-import { FieldError, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup';
-
-import { Input } from '../../components/Input';
+import { useForm } from 'react-hook-form';
 
 import logo from '../../assets/logo.svg';
-
+import { Input } from '../../components/Input';
 
 import {
   Button,
@@ -23,17 +19,10 @@ type SignIn = {
   password: string;
 }
 
-const schema = yup.object({
-  username: yup.string().required(),
-  password: yup.string().required(),
-}).required();
-
 export const SignIn = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<SignIn>({
-    resolver: yupResolver(schema)
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm<SignIn>();
 
-  const handleSignIn = (data: SignIn) => {
+  const handleSignIn = (data: any) => {
     setTimeout(() => {
       console.log(data);
     }, 0);
@@ -51,16 +40,16 @@ export const SignIn = () => {
           <Input
             label='Usuário'
             placeholder='Digite seu usuário'
-            errors={errors.username as FieldError}
-            {...register('username')}
+            errors={errors.username}
+            {...register('username', { required: true })}
           />
 
           <Input
             type='password'
             label='Senha'
             placeholder='Digite sua senha'
-            errors={errors.password as FieldError}
-            {...register('password')}
+            errors={errors.password}
+            {...register('password', { required: true })}
           />
 
           <div>

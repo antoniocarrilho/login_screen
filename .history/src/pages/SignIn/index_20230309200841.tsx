@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FieldError, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 
@@ -51,7 +51,7 @@ export const SignIn = () => {
           <Input
             label='Usuário'
             placeholder='Digite seu usuário'
-            errors={errors.username as FieldError}
+            errors={errors.username}
             {...register('username')}
           />
 
@@ -59,7 +59,7 @@ export const SignIn = () => {
             type='password'
             label='Senha'
             placeholder='Digite sua senha'
-            errors={errors.password as FieldError}
+            errors={errors.password}
             {...register('password')}
           />
 

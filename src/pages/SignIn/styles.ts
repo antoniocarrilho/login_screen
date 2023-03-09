@@ -48,14 +48,6 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
-export const Label = styled.label`
-  margin-bottom: 4px;
-`;
-
-export const Input = styled.input`
-  margin-bottom: 8px;
-`;
-
 export const Button = styled.button`
   margin-top: 12px;
 

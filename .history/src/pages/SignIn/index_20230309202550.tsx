@@ -51,7 +51,7 @@ export const SignIn = () => {
           <Input
             label='Usuário'
             placeholder='Digite seu usuário'
-            errors={errors.username as FieldError}
+            errors={errors.username}
             {...register('username')}
           />
 
