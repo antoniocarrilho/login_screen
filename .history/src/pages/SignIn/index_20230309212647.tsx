@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 
@@ -18,7 +18,7 @@ import {
   Title,
 } from './styles';
 
-type SignInForm = {
+type SignIn = {
   username: string;
   password: string;
 }
@@ -29,13 +29,13 @@ const schema = yup.object().shape({
 });
 
 export const SignIn = () => {
-  const { register, handleSubmit, formState } = useForm<SignInForm>({
+  const { register, handleSubmit, formState } = useForm<SignIn>({
     resolver: yupResolver(schema)
   });
 
   const errors = formState.errors;
 
-  const handleSignIn = (data: SignInForm) => {
+  const handleSignIn = (data: SignIn) => {
     console.log(data);
   }
 

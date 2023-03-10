@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 
@@ -18,25 +18,27 @@ import {
   Title,
 } from './styles';
 
-type SignInForm = {
+type SignIn = {
   username: string;
   password: string;
 }
 
-const schema = yup.object().shape({
+const schema = yup.object({
   username: yup.string().required(),
   password: yup.string().required(),
 });
 
 export const SignIn = () => {
-  const { register, handleSubmit, formState } = useForm<SignInForm>({
+  const { register, handleSubmit, formState } = useForm<SignIn>({
     resolver: yupResolver(schema)
   });
 
   const errors = formState.errors;
 
-  const handleSignIn = (data: SignInForm) => {
-    console.log(data);
+  const handleSignIn = (data: SignIn) => {
+    setTimeout(() => {
+      console.log(data);
+    }, 0);
   }
 
   return (
@@ -51,7 +53,7 @@ export const SignIn = () => {
           <Input
             label='Usuário'
             placeholder='Digite seu usuário'
-            error={errors.username}
+            error={errors.username as FieldError}
             {...register('username')}
           />
 
@@ -59,7 +61,7 @@ export const SignIn = () => {
             type='password'
             label='Senha'
             placeholder='Digite sua senha'
-            error={errors.password}
+            error={errors.password as FieldError}
             {...register('password')}
           />
 

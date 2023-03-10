@@ -1,4 +1,4 @@
-import React, { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 
 import { FieldError } from "react-hook-form";
 
@@ -9,7 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError;
 }
 
-export const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ label, name, error, ...rest }: InputProps, ref) => {
+export const Input = ({ label, name, error, ...rest }: InputProps) => {
 
   console.log(error);
 
@@ -20,12 +20,9 @@ export const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> =
         id={name}
         name={name}
         isError={!!error}
-        ref={ref}
         {...rest}
       />
       {!!error && <Error>{error.message}</Error>}
     </>
   )
 }
-
-export const Input = forwardRef(InputBase);

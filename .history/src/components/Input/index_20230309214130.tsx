@@ -17,8 +17,7 @@ export const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> =
     <>
       <Label htmlFor={name}>{label}</Label>
       <InputStyles
-        id={name}
-        name={name}
+
         isError={!!error}
         ref={ref}
         {...rest}

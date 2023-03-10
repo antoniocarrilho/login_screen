@@ -18,7 +18,7 @@ import {
   Title,
 } from './styles';
 
-type SignInForm = {
+type SignIn = {
   username: string;
   password: string;
 }
@@ -28,14 +28,14 @@ const schema = yup.object().shape({
   password: yup.string().required(),
 });
 
-export const SignIn = () => {
-  const { register, handleSubmit, formState } = useForm<SignInForm>({
+const SignIn = () => {
+  const { register, handleSubmit, formState } = useForm<SignIn>({
     resolver: yupResolver(schema)
   });
 
   const errors = formState.errors;
 
-  const handleSignIn = (data: SignInForm) => {
+  const handleSignIn = (data: SignIn) => {
     console.log(data);
   }
 
@@ -82,3 +82,5 @@ export const SignIn = () => {
     </Container>
   )
 }
+
+export SignIn;
