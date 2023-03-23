@@ -10,9 +10,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ label, name, error, ...rest }: InputProps, ref) => {
-
-  console.log(error);
-
   return (
     <>
       <Label htmlFor={name}>{label}</Label>

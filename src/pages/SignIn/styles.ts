@@ -51,7 +51,7 @@ export const Title = styled.h1`
 export const Button = styled.button`
   margin-top: 12px;
 
-  color: #FFF;
+  color: ${props => props.theme.white};
   background-color: #00B5FF;
 
   padding: 6px;
