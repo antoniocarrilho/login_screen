@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -35,8 +36,11 @@ export const SignIn = () => {
 
   const errors = formState.errors;
 
+  const navigate = useNavigate();
+
   const handleSignIn = (data: SignInForm) => {
     console.log(data);
+    navigate('/dashboard');
   }
 
   return (
@@ -73,10 +77,14 @@ export const SignIn = () => {
               <Label htmlFor='rememberme'>Lembrar me</Label> */}
             </div>
 
-            <a href='/'>Esqueceu sua senha?</a>
+            <NavLink to='/forgat'>Esqueceu sua senha?</NavLink>
           </div>
 
           <Button type='submit'>Entrar</Button>
+
+          <p>Ou</p>
+
+          <NavLink to='/register'>Registre-se</NavLink>
         </Form>
       </Content>
     </Container>
