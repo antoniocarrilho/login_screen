@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
+import { AppProviders } from './hooks';
 
 import { Router } from './routes/Router';
 
@@ -12,9 +13,12 @@ import { defaultTheme } from './styles/themes/default';
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+
+      <AppProviders>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </AppProviders>
 
       <GlobalStyle />
     </ThemeProvider>
