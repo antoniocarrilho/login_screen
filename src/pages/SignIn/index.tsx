@@ -1,5 +1,4 @@
-import React from 'react';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -9,7 +8,6 @@ import { Input } from '../../components/Input';
 
 import logo from '../../assets/logo.svg';
 
-
 import {
   Button,
   Container,
@@ -18,6 +16,7 @@ import {
   Image,
   Title,
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 type SignInForm = {
   username: string;
@@ -37,10 +36,14 @@ export const SignIn = () => {
   const errors = formState.errors;
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleSignIn = (data: SignInForm) => {
-    console.log(data);
-    navigate('/dashboard');
+  const { signIn } = useAuth();
+
+  let from = location.state?.from?.pathname || "/";
+
+  const handleSignIn = async ({ username, password }: SignInForm) => {
+    await signIn({ email: username, password }, () => navigate(from, { replace: true }));
   }
 
   return (

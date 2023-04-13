@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { AppProviders } from './hooks';
 
-import { Router } from './routes/Router';
+import { Routes } from './routes';
 
 import { GlobalStyle } from './styles/global';
 
@@ -16,7 +16,7 @@ function App() {
 
       <AppProviders>
         <BrowserRouter>
-          <Router />
+          <Routes />
         </BrowserRouter>
       </AppProviders>
 
